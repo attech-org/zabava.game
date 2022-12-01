@@ -17,7 +17,7 @@ interface WiredSpinner {
 }
 
 interface WiredTabs {
-  selected: string;
+  selected?: string;
   name: string;
   label: string;
 }
