@@ -29,6 +29,7 @@ interface WiredTextarea {
   disabled: boolean;
   placeholder: string;
 }
+
 interface WiredToggle {
   checked: boolean;
   disabled: boolean;
@@ -41,9 +42,3 @@ interface WiredVideo {
   muted: boolean;
   playsinline: boolean;
 }
-
-
-
-
-
-
