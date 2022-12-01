@@ -1,8 +1,5 @@
-import { useState } from "react";
 import styled from "styled-components";
 import "wired-elements";
-
-import words from "./content/alias_words.json";
 
 const Main = styled.main`
   margin: 0 auto;
@@ -21,55 +18,46 @@ const CardBoard = styled.section`
   wired-card {
     width: 300px;
     height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
+    padding: 1rem 2.5rem;
+
+    h2 {
+      font-size: 1.5rem;
+      line-height: 1.5;
+    }
+    li {
+      list-style-type: decimal;
+    }
   }
 `;
 
-const CardBoardActions = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 0.5rem 0;
-`
-
 const App: React.FunctionComponent = () => {
-  const [isGameRunning, setIsGameRunning] = useState(false);
-  const [wordIdx, setWordIdx] = useState(0);
-
-  const handleStartGameButtonClick = () => {
-    setIsGameRunning(!isGameRunning);
-  };
-
-  const handleNextWordClick = () => {
-    setWordIdx(Math.min(wordIdx + 1, words.length - 1));
-  };
-
-  const handlePrevWordClick = () => {
-    setWordIdx(Math.max(wordIdx - 1, 0));
-  };
-
   return (
     <Main>
-      {isGameRunning ? (
-        <CardBoard>
-          <wired-card elevation="3">{words[wordIdx]}</wired-card>
-          <CardBoardActions>
-            <wired-button elevation="2" onClick={handlePrevWordClick}>
-              prev
-            </wired-button>
-            <wired-button elevation="2" onClick={handleNextWordClick}>
-              next
-            </wired-button>
-          </CardBoardActions>
-        </CardBoard>
-      ) : (
-        <wired-button elevation="2" onClick={handleStartGameButtonClick}>
-          start game
-        </wired-button>
-      )}
+      <CardBoard>
+        <h1>v1</h1>
+        <wired-card elevation="3">
+          <h2>User Flow:</h2>
+          <ol>
+            <li>Open website</li>
+            <li>Create Room</li>
+            <li>Invite Players</li>
+            <li>Select Game</li>
+            <li>Start Game</li>
+          </ol>
+          <h2>Games List:</h2>
+          <ol>
+            <li>Alias</li>
+            <li>Crocodile</li>
+          </ol>
+          <h2>Key Features:</h2>
+          <ol>
+            <li>Embedded Audio/Video Calls</li>
+            <li>Simple Games</li>
+            <li>Multi Language</li>
+            <li>Works in Browser</li>
+          </ol>
+        </wired-card>
+      </CardBoard>
     </Main>
   );
 };
