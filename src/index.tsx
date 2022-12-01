@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { createGlobalStyle } from 'styled-components';
 import App from './App';
 import 'reset-css';
+import "wired-elements";
 
 const GlobalStyles = createGlobalStyle`
   body {

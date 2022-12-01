@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styled from "styled-components";
-import "wired-elements";
 
 import words from "../content/alias_words.json";
 
@@ -55,7 +54,7 @@ const App: React.FunctionComponent = () => {
     <Main>
       {isGameRunning ? (
         <CardBoard>
-          <wired-card elevation="3">{words[wordIdx]}</wired-card>
+          <wired-card elevation={3}>{words[wordIdx]}</wired-card>
           <CardBoardActions>
             <wired-button elevation={2} onClick={handlePrevWordClick}>
               prev
