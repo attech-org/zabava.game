@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/zabava.game/static/css/main.61c0e92e.css",
-    "main.js": "/zabava.game/static/js/main.31c24c5b.js",
+    "main.js": "/zabava.game/static/js/main.d54bdf73.js",
     "index.html": "/zabava.game/index.html",
     "main.61c0e92e.css.map": "/zabava.game/static/css/main.61c0e92e.css.map",
-    "main.31c24c5b.js.map": "/zabava.game/static/js/main.31c24c5b.js.map"
+    "main.d54bdf73.js.map": "/zabava.game/static/js/main.d54bdf73.js.map"
   },
   "entrypoints": [
     "static/css/main.61c0e92e.css",
-    "static/js/main.31c24c5b.js"
+    "static/js/main.d54bdf73.js"
   ]
 }
