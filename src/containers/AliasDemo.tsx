@@ -57,16 +57,16 @@ const App: React.FunctionComponent = () => {
         <CardBoard>
           <wired-card elevation="3">{words[wordIdx]}</wired-card>
           <CardBoardActions>
-            <wired-button elevation="2" onClick={handlePrevWordClick}>
+            <wired-button elevation={2} onClick={handlePrevWordClick}>
               prev
             </wired-button>
-            <wired-button elevation="2" onClick={handleNextWordClick}>
+            <wired-button elevation={2} onClick={handleNextWordClick}>
               next
             </wired-button>
           </CardBoardActions>
         </CardBoard>
       ) : (
-        <wired-button elevation="2" onClick={handleStartGameButtonClick}>
+        <wired-button elevation={2} onClick={handleStartGameButtonClick}>
           start game
         </wired-button>
       )}
