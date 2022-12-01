@@ -13,7 +13,6 @@ interface WiredSlider {
 interface WiredSpinner {
   spinning: boolean;
   duration: number;
-  value: string;
 }
 
 interface WiredTabs {
