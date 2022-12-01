@@ -1,44 +1,26 @@
-interface WiredButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  elevation: number;
-  disabled?: boolean;
-}
-interface WiredCalendar extends React.HTMLAttributes<HTMLElement> {
-  elevation: number;
-  selected?: string;
-  firstdate?: string;
-  lastdate?: string;
-  locale?: string;
-  disabled: boolean;
-  initials: boolean;
-  value?: { date: Date; text: string };
-  format: Function;
-}
-interface WiredCard extends React.HTMLAttributes<HTMLElement> {
-  elevation: number;
-  fill?: string;
-}
-interface WiredCheckbox extends React.HTMLAttributes<HTMLElement> {
-  checked: boolean;
-  disabled: boolean;
-}
-interface WiredCombo extends React.HTMLAttributes<HTMLElement> {
-  disabled: boolean;
-  selected?: string;
-}
-interface WiredDialog extends React.HTMLAttributes<HTMLElement> {
-  elevation: number;
-  open: boolean;
-}
-interface WiredDivider extends React.HTMLAttributes<HTMLElement> {
-  elevation: number;
-}
-interface WiredFab extends React.HTMLAttributes<HTMLElement> {
-  disabled: boolean;
-}
-
 declare namespace JSX {
   interface IntrinsicElements {
-    [elemName: string]: any;
-    "wired-button": WiredButton;
+    "wired-button": import("wired-elements").WiredButton | React.ButtonHTMLAttributes<HTMLButtonElement>;
+    "wired-calendar": import("wired-elements").WiredCalendar | React.HTMLAttributes<HTMLElement>;
+    "wired-card": import("wired-elements").WiredCard | React.HTMLAttributes<HTMLElement>;
+    "wired-checkbox": import("wired-elements").WiredCheckbox | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-combo": import("wired-elements").WiredCombo | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-dialog": import("wired-elements").WiredDialog | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-divider": import("wired-elements").WiredDivider | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-fab": import("wired-elements").WiredFab | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-icon-button": import("wired-elements").WiredIconButton | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-image": import("wired-elements").WiredImage | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-input": import("wired-elements").WiredInput | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-link": import("wired-elements").WiredLink | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-listbox": import("wired-elements").WiredListbox | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-progress": import("wired-elements").WiredProgress | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-radio": import("wired-elements").WiredRadio | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-search-input": import("wired-elements").WiredSearchInput | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-slider": import("wired-elements").WiredSlider | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-spinner": import("wired-elements").WiredSpinner | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-tabs": import("wired-elements").WiredTabs | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-textarea": import("wired-elements").WiredTextarea | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-toggle": import("wired-elements").WiredToggle | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-video": import("wired-elements").WiredVideo | React.HtmlHTMLAttributes<HTMLElement>;
   }
 }

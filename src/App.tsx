@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import "wired-elements";
 
 const Main = styled.main`
   margin: 0 auto;
@@ -35,7 +34,7 @@ const App: React.FunctionComponent = () => {
     <Main>
       <CardBoard>
         <h1>v1</h1>
-        <wired-card elevation="3">
+        <wired-card elevation={3} onClick={() => {}}>
           <h2>User Flow:</h2>
           <ol>
             <li>Open website</li>
