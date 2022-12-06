@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Main = styled.main`
+export const Main = styled.main`
   margin: 0 auto;
   max-width: 1200px;
   height: 100vh;
@@ -9,7 +9,7 @@ const Main = styled.main`
   justify-content: center;
 `;
 
-const CardBoard = styled.section`
+export const CardBoard = styled.section`
   display: flex;
   flex-direction: column;
   padding: 1rem;
