@@ -14,7 +14,7 @@ declare namespace JSX {
     "wired-link": import("wired-elements").WiredLink | React.HtmlHTMLAttributes<HTMLElement>;
     "wired-listbox": import("wired-elements").WiredListbox | React.HtmlHTMLAttributes<HTMLElement>;
     "wired-progress": import("wired-elements").WiredProgress | React.HtmlHTMLAttributes<HTMLElement>;
-    "wired-radio": import("wired-elements").WiredRadio | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-radio": import("wired-elements").React.HtmlHTMLAttributes<HTMLElement> | WiredRadio;
     "wired-search-input": import("wired-elements").WiredSearchInput | React.HtmlHTMLAttributes<HTMLElement>;
     "wired-slider": import("wired-elements").WiredSlider | React.HtmlHTMLAttributes<HTMLElement>;
     "wired-spinner": import("wired-elements").WiredSpinner | React.HtmlHTMLAttributes<HTMLElement>;
