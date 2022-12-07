@@ -23,7 +23,8 @@ const Checkbox = styled.input`
   // };
 `;
 
-const DeletePlayer = styled.h1`
+const DeletePlayer = styled.h2`
+  cursor: pointer;
   color: red;
   font-weight: 700;
 `;
@@ -51,10 +52,11 @@ const JoinedPlayersCard: React.FunctionComponent = () => {
                     <Checkbox as='wired-radio' checked disabled /> :
                     <Checkbox as='wired-radio' disabled />
                   }
-                  <h3>{player.nickname}</h3>
-                  <DeletePlayer>X</DeletePlayer>
+                  <h2>{player.nickname}</h2>
+                  <DeletePlayer onClick={()=>{alert("Click start")}}>X</DeletePlayer>
                 </Player>
-            )})
+              )
+            })
           }
         </wired-card>
       </CardBoard>
