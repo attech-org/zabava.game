@@ -66,12 +66,10 @@ const CreateGameForm = () => {
               pattern="/^\w+$/"
               onChange={handleInput}
             />
-            {!isValid && (
-              <Error>
-                Only latin character, numbers and undescore allowed!
-              </Error>
-            )}
           </p>
+          {!isValid && (
+            <Error>Only latin character, numbers and undescore allowed!</Error>
+          )}
 
           <ButtonWrapper>
             <StyledLink to={"/room?name=" + input}>
