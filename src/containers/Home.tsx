@@ -9,7 +9,7 @@ export const Main = styled.main`
   justify-content: center;
 `;
 
-export const CardBoard = styled.section`
+const CardBoard = styled.section`
   display: flex;
   flex-direction: column;
   padding: 1rem;

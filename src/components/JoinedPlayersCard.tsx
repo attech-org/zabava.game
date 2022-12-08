@@ -1,26 +1,27 @@
-import { CardBoard } from "../containers/Home";
-import styled from "styled-components"
+import styled from "styled-components";
+
+const CardBoard = styled.section`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  wired-card {
+    width: 300px;
+    height: 400px;
+    padding: 1rem 2.5rem;
+
+    h2 {
+      font-size: 1.5rem;
+      line-height: 1.5;
+    }
+  }
+`;
 
 const Player = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 10px;
-`;
-
-const Checkbox = styled.input`
-  // background-color: green;
-  // color: red;
-  // border-color: blue;
-
-  // .checked {
-  //   --wired-radio-icon-color: red;
-  // };
-
-  // &:desable {
-  //   background-color: green;
-  //   color: red;
-  //   border-color: blue;
-  // };
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const DeletePlayer = styled.h2`
@@ -48,11 +49,11 @@ const JoinedPlayersCard: React.FunctionComponent = () => {
             .map((player, index) => {
               return (
                 <Player key={index}>
-                  {player.ready ?
-                    <Checkbox as='wired-radio' checked disabled /> :
-                    <Checkbox as='wired-radio' disabled />
-                  }
                   <h2>{player.nickname}</h2>
+                  {player.ready ?
+                    <wired-checkbox checked disabled /> :
+                    <wired-checkbox disabled />
+                  }
                   <DeletePlayer onClick={()=>{alert("Click start")}}>X</DeletePlayer>
                 </Player>
               )

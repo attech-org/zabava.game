@@ -3,8 +3,9 @@ declare namespace JSX {
     "wired-button": import("wired-elements").WiredButton | React.ButtonHTMLAttributes<HTMLButtonElement>;
     "wired-calendar": import("wired-elements").WiredCalendar | React.HTMLAttributes<HTMLElement>;
     "wired-card": import("wired-elements").WiredCard | React.HTMLAttributes<HTMLElement>;
-    "wired-checkbox": import("wired-elements").WiredCheckbox | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-checkbox": import("wired-elements").React.HtmlHTMLAttributes<HTMLElement> | WiredCheckbox;
     "wired-combo": import("wired-elements").WiredCombo | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-item": import("wired-elements").React.HtmlHTMLAttributes<HTMLElement> | WiredItem;
     "wired-dialog": import("wired-elements").WiredDialog | React.HtmlHTMLAttributes<HTMLElement>;
     "wired-divider": import("wired-elements").WiredDivider | React.HtmlHTMLAttributes<HTMLElement>;
     "wired-fab": import("wired-elements").WiredFab | React.HtmlHTMLAttributes<HTMLElement>;
