@@ -2,60 +2,91 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const FormWrapper = styled.section`
+const Card = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  /* background-color: red; */
-  /* width: 200px; */
+  width: 400px;
   height: 300px;
 
-  wired-card {
-    background-color: white;
+  p {
+    margin: 10px 0;
+    width: 90%;
   }
-
-  h1 {
-    padding: 10px;
+  input {
+    width: 100%;
   }
-
-  wired-button {
-    /* margin: 20px; */
-    padding: 10px;
-  }
-
   wired-input {
-    padding: 10px;
+    width: 100%;
   }
 `;
 
-const CreateGameForm = () => {
-  const [roomName, setRoomName] = useState<string>("");
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
 
-  const inputTextHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setRoomName(e.target.value);
-    console.log(roomName);
+const ButtonWrapper = styled.div`
+  display: flex;
+`;
+
+const Error = styled.p`
+  color: red;
+`;
+
+const CreateGameForm = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [input, setInput] = useState<string>("");
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setInput(e.target.value);
   };
+
+  const roomNameRegex = /^\w+$/;
+
+  const isValid = roomNameRegex.test(input);
 
   return (
     <>
-      <FormWrapper>
-        <wired-card>
+      <wired-button onClick={() => setIsOpen(true)}>Create Room</wired-button>
+
+      <wired-dialog {...(isOpen ? { open: true } : {})}>
+        <Card>
           <h1>Create game</h1>
-          <div>
-            <wired-input
+
+          {/* <p>
+            <wired-input type="text" pattern="/^\w+$/" onChange={handleInput} />
+          </p> */}
+
+          <p>
+            <input
               type="text"
-              onChange={inputTextHandler}
               placeholder="enter room name"
-            ></wired-input>
-            <div>sa{roomName}</div>
-            <wired-button>
-              <Link to={"/room?name=" + roomName}>create</Link>
-            </wired-button>
-          </div>
-        </wired-card>
-      </FormWrapper>
+              pattern="/^\w+$/"
+              onChange={handleInput}
+            />
+            {!isValid && (
+              <Error>
+                Only latin character, numbers and undescore allowed!
+              </Error>
+            )}
+          </p>
+
+          <ButtonWrapper>
+            <StyledLink to={"/room?name=" + input}>
+              <wired-button
+                {...(isValid ? {} : { disabled: true })}
+                onClick={() => (isValid ? setIsOpen(false) : null)}
+              >
+                Create
+              </wired-button>
+            </StyledLink>
+
+            <wired-button onClick={() => setIsOpen(false)}>Close</wired-button>
+          </ButtonWrapper>
+        </Card>
+      </wired-dialog>
     </>
   );
 };

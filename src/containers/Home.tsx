@@ -1,44 +1,52 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import CreateGameForm from "../components/CreateGameForm";
 import JoinGameForm from "../components/JoinGameForm";
+import { Main } from "../styles";
 
 const StartMenu = styled.section`
+  padding: 1rem;
+
   wired-card {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    /* flex-direction: column; */
+    width: 300px;
+    height: 400px;
+    /* background-color: red; */
   }
   wired-button {
-    margin: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
+    width: 150px;
+    margin: 30px;
   }
 `;
 
-const Start = () => {
-  // const [modalActive, setModalActive] = useState<boolean>(false);
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
 
+const Home: React.FunctionComponent = () => {
   return (
-    <>
+    <Main>
       <StartMenu>
         <h1>Start Menu</h1>
-        <wired-card>
+        <wired-card elevation={3}>
           <CreateGameForm />
 
           <JoinGameForm />
 
-          <wired-button>
-            <Link to="/about">about</Link>
-          </wired-button>
+          <StyledLink to="/about">
+            <wired-button>about</wired-button>
+          </StyledLink>
         </wired-card>
       </StartMenu>
-    </>
+    </Main>
   );
 };
 
-export default Start;
+export default Home;
