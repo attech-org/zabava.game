@@ -7,10 +7,10 @@ const AppRouter: React.FunctionComponent = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/rooms" element={<Rooms />} />
       <Route path="game">
         <Route path="alias/*" element={<Alias />} />
       </Route>
+      <Route path="/rooms" element={<Rooms />} />
       <Route path="*" element={<>404</>} />
     </Routes>
   );
