@@ -23,13 +23,13 @@ interface Player {
 interface Team {
   id: number;
   name: string;
-  playerIds: number[];
+  players: Player[];
 }
 
 type Role = 'admin' | 'player';
 
 
-interface AliasContextType {
+export interface AliasContextType {
   players: Player[];
   setPlayers: (value: Player[]) => void;
   teams: Team[];
