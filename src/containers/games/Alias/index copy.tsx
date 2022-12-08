@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import words from "../content/alias_words.json";
+import words from "../../../content/alias_words.json";
 
 const Main = styled.main`
   margin: 0 auto;
