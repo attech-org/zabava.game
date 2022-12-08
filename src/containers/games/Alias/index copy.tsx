@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import words from "../content/alias_words.json";
+import words from "../../../content/alias_words.json";
 
 const Main = styled.main`
   margin: 0 auto;
@@ -34,7 +34,7 @@ const CardBoardActions = styled.div`
   padding: 0.5rem 0;
 `
 
-const App: React.FunctionComponent = () => {
+const AliasDemo: React.FunctionComponent = () => {
   const [isGameRunning, setIsGameRunning] = useState(false);
   const [wordIdx, setWordIdx] = useState(0);
 
@@ -73,4 +73,4 @@ const App: React.FunctionComponent = () => {
   );
 };
 
-export default App;
+export default AliasDemo;
