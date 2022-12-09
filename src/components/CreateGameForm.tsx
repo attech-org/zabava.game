@@ -27,9 +27,14 @@ const Input = styled.input`
   padding: 10px 5px;
 `;
 
-const StyledLink = styled(Link)`
+interface StyledLinkProps {
+  isValid: boolean;
+}
+
+const StyledLink = styled(Link)<StyledLinkProps>`
   text-decoration: none;
   color: black;
+  pointer-events: ${(props) => (props.isValid ? "auto" : "none")};
 `;
 
 const ButtonWrapper = styled.div`
@@ -76,7 +81,7 @@ const CreateGameForm = () => {
           </div>
 
           <ButtonWrapper>
-            <StyledLink to={"/room?name=" + input}>
+            <StyledLink isValid={isValid} to={"/room?name=" + input}>
               <wired-button
                 {...(isValid ? {} : { disabled: true })}
                 onClick={() => (isValid ? setIsOpen(false) : null)}
