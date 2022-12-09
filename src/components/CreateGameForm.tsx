@@ -27,6 +27,10 @@ const Input = styled.input`
   padding: 10px 5px;
 `;
 
+const Error = styled.p`
+  color: red;
+`;
+
 interface StyledLinkProps {
   isValid: boolean;
 }
@@ -41,8 +45,8 @@ const ButtonWrapper = styled.div`
   display: flex;
 `;
 
-const Error = styled.p`
-  color: red;
+const Button = styled.div`
+  margin: 20px;
 `;
 
 const CreateGameForm = () => {
@@ -55,7 +59,7 @@ const CreateGameForm = () => {
 
   const roomNameRegex = /^\w+$/;
 
-  const isValid = roomNameRegex.test(input || "none");
+  const isValid = roomNameRegex.test(input);
 
   return (
     <>
@@ -81,16 +85,22 @@ const CreateGameForm = () => {
           </div>
 
           <ButtonWrapper>
-            <StyledLink isValid={isValid} to={"/room?name=" + input}>
-              <wired-button
-                {...(isValid ? {} : { disabled: true })}
-                onClick={() => (isValid ? setIsOpen(false) : null)}
-              >
-                Create
-              </wired-button>
-            </StyledLink>
+            <Button>
+              <StyledLink isValid={isValid} to={"/room?name=" + input}>
+                <wired-button
+                  {...(isValid ? {} : { disabled: true })}
+                  onClick={() => (isValid ? setIsOpen(false) : null)}
+                >
+                  Create
+                </wired-button>
+              </StyledLink>
+            </Button>
 
-            <wired-button onClick={() => setIsOpen(false)}>Close</wired-button>
+            <Button>
+              <wired-button onClick={() => setIsOpen(false)}>
+                Close
+              </wired-button>
+            </Button>
           </ButtonWrapper>
         </Card>
       </wired-dialog>

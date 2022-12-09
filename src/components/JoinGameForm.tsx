@@ -36,6 +36,10 @@ const ButtonWrapper = styled.div`
   display: flex;
 `;
 
+const Button = styled.div`
+  margin: 20px;
+`;
+
 const JoinGameForm = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [input, setInput] = useState<string>("");
@@ -61,11 +65,19 @@ const JoinGameForm = () => {
           />
 
           <ButtonWrapper>
-            <StyledLink to={"/room?name=" + input}>
-              <wired-button onClick={() => setIsOpen(false)}>Join</wired-button>
-            </StyledLink>
+            <Button>
+              <StyledLink to={"/room?name=" + input}>
+                <wired-button onClick={() => setIsOpen(false)}>
+                  Join
+                </wired-button>
+              </StyledLink>
+            </Button>
 
-            <wired-button onClick={() => setIsOpen(false)}>Close</wired-button>
+            <Button>
+              <wired-button onClick={() => setIsOpen(false)}>
+                Close
+              </wired-button>
+            </Button>
           </ButtonWrapper>
         </Card>
       </wired-dialog>

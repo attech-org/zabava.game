@@ -18,10 +18,12 @@ const StartMenu = styled.section`
   wired-button {
     display: flex;
     flex-direction: column;
-
     width: 150px;
-    padding: 20px;
   }
+`;
+
+const Button = styled.div`
+  margin: 40px;
 `;
 
 const StyledLink = styled(Link)`
@@ -35,13 +37,19 @@ const Home: React.FunctionComponent = () => {
       <StartMenu>
         <h1>Start Menu</h1>
         <wired-card elevation={3}>
-          <CreateGameForm />
+          <Button>
+            <CreateGameForm />
+          </Button>
 
-          <JoinGameForm />
+          <Button>
+            <JoinGameForm />
+          </Button>
 
-          <StyledLink to="/about">
-            <wired-button>about</wired-button>
-          </StyledLink>
+          <Button>
+            <StyledLink to="/about">
+              <wired-button>about</wired-button>
+            </StyledLink>
+          </Button>
         </wired-card>
       </StartMenu>
     </Main>
