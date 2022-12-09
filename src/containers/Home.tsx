@@ -1,62 +1,57 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import CreateGameForm from "../components/CreateGameForm";
+import JoinGameForm from "../components/JoinGameForm";
+import { Main } from "../styles";
 
-const Main = styled.main`
-  margin: 0 auto;
-  max-width: 1200px;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const CardBoard = styled.section`
-  display: flex;
-  flex-direction: column;
+const StartMenu = styled.section`
   padding: 1rem;
 
   wired-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 300px;
     height: 400px;
-    padding: 1rem 2.5rem;
-
-    h2 {
-      font-size: 1.5rem;
-      line-height: 1.5;
-    }
-    li {
-      list-style-type: decimal;
-    }
   }
+
+  wired-button {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+  }
+`;
+
+const Button = styled.div`
+  margin: 40px;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
 `;
 
 const Home: React.FunctionComponent = () => {
   return (
     <Main>
-      <CardBoard>
-        <h1>v1</h1>
-        <wired-card elevation={3} onClick={() => {}}>
-          <h2>User Flow:</h2>
-          <ol>
-            <li>Open website</li>
-            <li>Create Room</li>
-            <li>Invite Players</li>
-            <li>Select Game</li>
-            <li>Start Game</li>
-          </ol>
-          <h2>Games List:</h2>
-          <ol>
-            <li>Alias</li>
-            <li>Crocodile</li>
-          </ol>
-          <h2>Key Features:</h2>
-          <ol>
-            <li>Embedded Audio/Video Calls</li>
-            <li>Simple Games</li>
-            <li>Multi Language</li>
-            <li>Works in Browser</li>
-          </ol>
+      <StartMenu>
+        <h1>Start Menu</h1>
+        <wired-card elevation={3}>
+          <Button>
+            <CreateGameForm />
+          </Button>
+
+          <Button>
+            <JoinGameForm />
+          </Button>
+
+          <Button>
+            <StyledLink to="/about">
+              <wired-button>about</wired-button>
+            </StyledLink>
+          </Button>
         </wired-card>
-      </CardBoard>
+      </StartMenu>
     </Main>
   );
 };
