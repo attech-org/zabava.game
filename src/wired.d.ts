@@ -1,27 +1,29 @@
+type Wired2React<T> = Partial<T> & React.RefAttributes<T> | React.HTMLAttributes<T>;
+
 declare namespace JSX {
   interface IntrinsicElements {
-    "wired-button": import("wired-elements").WiredButton | React.ButtonHTMLAttributes<HTMLButtonElement>;
-    "wired-calendar": import("wired-elements").WiredCalendar | React.Attributes<HTMLElement>;
-    "wired-card": import("wired-elements").WiredCard | React.Attributes<HTMLElement>;
-    "wired-checkbox": import("wired-elements").WiredCheckbox | React.Attributes<HTMLElement>;
-    "wired-combo": import("wired-elements").WiredCombo | React.Attributes<HTMLElement>;
-    "wired-dialog": import("wired-elements").WiredDialog | React.Attributes<HTMLElement>;
-    "wired-divider": import("wired-elements").WiredDivider | React.Attributes<HTMLElement>;
-    "wired-fab": import("wired-elements").WiredFab | React.Attributes<HTMLElement>;
-    "wired-icon-button": import("wired-elements").WiredIconButton | React.Attributes<HTMLElement>;
-    "wired-image": import("wired-elements").WiredImage | React.Attributes<HTMLElement>;
-    "wired-input": import("wired-elements").WiredInput | React.Attributes<HTMLElement>;
-    "wired-item": import("wired-elements").WiredItem | React.Attributes<HTMLElement>;
-    "wired-link": import("wired-elements").WiredLink | React.Attributes<HTMLElement>;
-    "wired-listbox": import("wired-elements").WiredListbox | React.Attributes<HTMLElement>;
-    "wired-progress": import("wired-elements").WiredProgress | React.Attributes<HTMLElement>;
-    "wired-radio": import("wired-elements").WiredRadio | React.Attributes<HTMLElement>;
-    "wired-search-input": import("wired-elements").WiredSearchInput | React.Attributes<HTMLElement>;
-    "wired-slider": import("wired-elements").WiredSlider | React.Attributes<HTMLElement>;
-    "wired-spinner": import("wired-elements").WiredSpinner | React.Attributes<HTMLElement>;
-    "wired-tabs": import("wired-elements").WiredTabs | React.Attributes<HTMLElement>;
-    "wired-textarea": import("wired-elements").WiredTextarea | React.Attributes<HTMLElement>;
-    "wired-toggle": import("wired-elements").WiredToggle | React.Attributes<HTMLElement>;
-    "wired-video": import("wired-elements").WiredVideo | React.Attributes<HTMLElement>;
+    "wired-button": Wired2React<import("wired-elements").WiredButton>;
+    "wired-calendar": Wired2React<import("wired-elements").WiredCalendar>;
+    "wired-card": Wired2React<import("wired-elements").WiredCard>;
+    "wired-checkbox": Wired2React<import("wired-elements").WiredCheckbox>;
+    "wired-combo": Wired2React<import("wired-elements").WiredCombo>;
+    "wired-dialog": Wired2React<import("wired-elements").WiredDialog>;
+    "wired-divider": Wired2React<import("wired-elements").WiredDivider>;
+    "wired-fab": Wired2React<import("wired-elements").WiredFab>;
+    "wired-icon-button": Wired2React<import("wired-elements").WiredIconButton>;
+    "wired-image": Wired2React<import("wired-elements").WiredImage>;
+    "wired-input": Wired2React<import("wired-elements").WiredInput>;
+    "wired-item": Wired2React<import("wired-elements").WiredItem>;
+    "wired-link": Wired2React<import("wired-elements").WiredLink>;
+    "wired-listbox": Wired2React<import("wired-elements").WiredListbox>;
+    "wired-progress": Wired2React<import("wired-elements").WiredProgress>;
+    "wired-radio": Wired2React<import("wired-elements").WiredRadio>;
+    "wired-search-input": Wired2React<import("wired-elements").WiredSearchInput>;
+    "wired-slider": Wired2React<import("wired-elements").WiredSlider>
+    "wired-spinner": Wired2React<import("wired-elements").WiredSpinner>;
+    "wired-tabs": Wired2React<import("wired-elements").WiredTabs>;
+    "wired-textarea": Wired2React<import("wired-elements").WiredTextarea>;
+    "wired-toggle": Wired2React<import("wired-elements").WiredToggle>;
+    "wired-video": Wired2React<import("wired-elements").WiredVideo>;
   }
 }
