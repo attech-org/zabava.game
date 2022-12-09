@@ -4,31 +4,36 @@ import styled from "styled-components";
 
 const Card = styled.section`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   width: 400px;
-  height: 300px;
+  height: 200px;
 
-  p {
-    margin: 10px 0;
-    width: 90%;
-  }
-  input {
-    width: 100%;
-  }
-  wired-input {
-    width: 100%;
+  wired-button {
+    width: 100px;
   }
 `;
 
-const ButtonWrapper = styled.div`
-  display: flex;
+const Header = styled.h1`
+  width: calc(400px - 20px + 4px);
+  margin: 10px 0;
+  text-align: left;
+`;
+
+const Input = styled.input`
+  width: calc(400px - 20px - 2 * 5px);
+  margin: 10px 0 5px 0;
+  padding: 10px 5px;
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: black;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
 `;
 
 const JoinGameForm = () => {
@@ -45,19 +50,15 @@ const JoinGameForm = () => {
 
       <wired-dialog {...(isOpen ? { open: true } : {})}>
         <Card>
-          <h1>Join game</h1>
+          <Header>Join game</Header>
 
-          {/* <p>
-            <wired-input type="text" pattern="/^\w+$/" onChange={handleInput} />
-          </p> */}
+          {/* <wired-input type="text" onChange={handleInput} /> */}
 
-          <p>
-            <input
-              type="text"
-              placeholder="enter room name"
-              onChange={handleInput}
-            />
-          </p>
+          <Input
+            type="text"
+            placeholder="enter room name"
+            onChange={handleInput}
+          />
 
           <ButtonWrapper>
             <StyledLink to={"/room?name=" + input}>

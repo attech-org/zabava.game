@@ -11,17 +11,16 @@ const StartMenu = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
-    /* flex-direction: column; */
     width: 300px;
     height: 400px;
-    /* background-color: red; */
   }
+
   wired-button {
     display: flex;
-    justify-content: center;
     flex-direction: column;
+
     width: 150px;
-    margin: 30px;
+    padding: 20px;
   }
 `;
 

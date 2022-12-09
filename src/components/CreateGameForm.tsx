@@ -4,22 +4,27 @@ import styled from "styled-components";
 
 const Card = styled.section`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   width: 400px;
-  height: 300px;
+  height: 200px;
 
-  p {
-    margin: 10px 0;
-    width: 90%;
+  wired-button {
+    width: 100px;
   }
-  input {
-    width: 100%;
-  }
-  wired-input {
-    width: 100%;
-  }
+`;
+
+const Header = styled.h1`
+  width: calc(400px - 20px + 4px);
+  margin: 10px 0;
+  text-align: left;
+`;
+
+const Input = styled.input`
+  width: calc(400px - 20px - 2 * 5px);
+  margin: 10px 0 5px 0;
+  padding: 10px 5px;
 `;
 
 const StyledLink = styled(Link)`
@@ -45,7 +50,7 @@ const CreateGameForm = () => {
 
   const roomNameRegex = /^\w+$/;
 
-  const isValid = roomNameRegex.test(input);
+  const isValid = roomNameRegex.test(input || "none");
 
   return (
     <>
@@ -53,23 +58,22 @@ const CreateGameForm = () => {
 
       <wired-dialog {...(isOpen ? { open: true } : {})}>
         <Card>
-          <h1>Create game</h1>
+          <Header>Create game</Header>
+          {/* <wired-input type="text" onChange={handleInput} /> */}
 
-          {/* <p>
-            <wired-input type="text" pattern="/^\w+$/" onChange={handleInput} />
-          </p> */}
-
-          <p>
-            <input
+          <div>
+            <Input
               type="text"
               placeholder="enter room name"
               pattern="/^\w+$/"
               onChange={handleInput}
             />
-          </p>
-          {!isValid && (
-            <Error>Only latin character, numbers and undescore allowed!</Error>
-          )}
+            {!isValid && (
+              <Error>
+                Only latin character, numbers and undescore allowed!
+              </Error>
+            )}
+          </div>
 
           <ButtonWrapper>
             <StyledLink to={"/room?name=" + input}>
