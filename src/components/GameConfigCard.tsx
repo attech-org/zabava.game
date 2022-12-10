@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { WiredInput } from "wired-elements";
 
 const CardBoard = styled.section`
   display: flex;
@@ -27,8 +28,20 @@ const CardBoard = styled.section`
 `;
 
 const GameConfigCard: React.FunctionComponent = () => {
-  const [room, setRoom] = useState("atlantida");
-  const [game, setGame] = useState(["alias","crocodile"]);
+  const [roomName, setRoomName] = useState<string>("");
+  // temporary data
+  const gameList = ["alias", "crocodile"];
+  
+  const handleInputRoomName = (e: React.ChangeEvent<WiredInput>): void => {
+    setRoomName(e.target.value);
+  };
+
+  const handleClickStart = (): void => {
+    setRoomName("");
+  }
+
+  const roomNameRegex = /^\w+$/;
+  const isValid = roomNameRegex.test(roomName);
 
   return (
     <CardBoard>
@@ -36,17 +49,16 @@ const GameConfigCard: React.FunctionComponent = () => {
       <wired-card>
         <div>
           <h2>room name:</h2>
-          <wired-input placeholder="Enter room name" />
+          <wired-input placeholder="room name..." value={roomName} onInput={handleInputRoomName} />
         </div>
         <div>
           <h2>Select game:</h2>
           <wired-combo>
-            {game.map((game, index) => {
+            {gameList.map((game, index) => {
               return (
                 <wired-item
                   key={index}
                   value={(index + 1).toString()}
-                  onClick={() => { alert("You choose game") }}
                 >
                   {game}
                 </wired-item>
@@ -55,7 +67,7 @@ const GameConfigCard: React.FunctionComponent = () => {
           </wired-combo>
         </div>
         <div>
-          <wired-button elevation={2} onClick={() =>{alert("Click start")}}>
+          <wired-button elevation={2} {...(isValid ? {} : {disabled: true})} onClick={handleClickStart}>
             start game
           </wired-button>
         </div>

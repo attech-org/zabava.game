@@ -50,10 +50,7 @@ const JoinedPlayersCard: React.FunctionComponent = () => {
               return (
                 <Player key={index}>
                   <h2>{player.nickname}</h2>
-                  {player.ready ?
-                    <wired-checkbox checked disabled /> :
-                    <wired-checkbox disabled />
-                  }
+                  <wired-checkbox {...(player.ready ? { checked: true } : {})} disabled />
                   <DeletePlayer onClick={()=>{alert("Click start")}}>X</DeletePlayer>
                 </Player>
               )

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import GameConfigCard from "../components/GameConfigCard";
 import JoinedPlayersCard from "../components/JoinedPlayersCard";
-import { Main } from "./Home";
+import { Main } from "../styles";
 
 const Rooms: React.FunctionComponent = () => {
 
