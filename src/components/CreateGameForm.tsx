@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { WiredInput } from "wired-elements";
 
 const Card = styled.section`
   display: flex;
@@ -38,7 +39,9 @@ interface StyledLinkProps {
   isValid: boolean;
 }
 
-const StyledLink = styled(Link)<StyledLinkProps>`
+const StyledLink = styled(({ isValid, ...props }) => (
+  <Link {...props} />
+))<StyledLinkProps>`
   text-decoration: none;
   color: black;
   pointer-events: ${(props) => (props.isValid ? "auto" : "none")};
@@ -55,14 +58,11 @@ const Button = styled.div`
 const CreateGameForm = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [input, setInput] = useState<string>("");
-
   const roomNameRegex = /^\w+$/;
-
   const isValid = roomNameRegex.test(input);
+  const textInput = useRef<WiredInput>(null);
 
-  const textInput = React.createRef<HTMLInputElement>();
-
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleInput = (e: React.ChangeEvent<WiredInput>): void => {
     setInput(e.target.value);
   };
 

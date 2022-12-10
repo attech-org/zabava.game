@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { WiredInput } from "wired-elements";
 
 const Card = styled.section`
   display: flex;
@@ -45,10 +46,9 @@ const Button = styled.div`
 const JoinGameForm = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [input, setInput] = useState<string>("");
+  const textInput = useRef<WiredInput>(null);
 
-  const textInput = React.createRef<HTMLInputElement>();
-
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleInput = (e: React.ChangeEvent<WiredInput>): void => {
     setInput(e.target.value);
   };
 
