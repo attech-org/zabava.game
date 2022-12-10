@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Alias from "./containers/games/Alias";
 import Home from "./containers/Home";
 import Rooms from "./containers/Rooms";
+import About from "./containers/About";
 
 const AppRouter: React.FunctionComponent = () => {
   return (
@@ -11,6 +12,8 @@ const AppRouter: React.FunctionComponent = () => {
         <Route path="alias/*" element={<Alias />} />
       </Route>
       <Route path="/rooms" element={<Rooms />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/room" element={<>Room</>} />
       <Route path="*" element={<>404</>} />
     </Routes>
   );

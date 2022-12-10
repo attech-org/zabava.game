@@ -1,27 +1,29 @@
+type Wired2React<T> = Partial<T> & React.RefAttributes<T> | React.HTMLAttributes<T>;
+
 declare namespace JSX {
   interface IntrinsicElements {
-    "wired-button": import("wired-elements").WiredButton | React.ButtonHTMLAttributes<HTMLButtonElement>;
-    "wired-calendar": import("wired-elements").WiredCalendar | React.HTMLAttributes<HTMLElement>;
-    "wired-card": import("wired-elements").WiredCard | React.HTMLAttributes<HTMLElement>;
-    "wired-checkbox": import("wired-elements").React.HtmlHTMLAttributes<HTMLElement> | WiredCheckbox;
-    "wired-combo": import("wired-elements").WiredCombo | React.HtmlHTMLAttributes<HTMLElement>;
-    "wired-item": import("wired-elements").React.HtmlHTMLAttributes<HTMLElement> | WiredItem;
-    "wired-dialog": import("wired-elements").WiredDialog | React.HtmlHTMLAttributes<HTMLElement>;
-    "wired-divider": import("wired-elements").WiredDivider | React.HtmlHTMLAttributes<HTMLElement>;
-    "wired-fab": import("wired-elements").WiredFab | React.HtmlHTMLAttributes<HTMLElement>;
-    "wired-icon-button": import("wired-elements").WiredIconButton | React.HtmlHTMLAttributes<HTMLElement>;
-    "wired-image": import("wired-elements").WiredImage | React.HtmlHTMLAttributes<HTMLElement>;
-    "wired-input": import("wired-elements").WiredInput | React.HtmlHTMLAttributes<HTMLElement>;
-    "wired-link": import("wired-elements").WiredLink | React.HtmlHTMLAttributes<HTMLElement>;
-    "wired-listbox": import("wired-elements").WiredListbox | React.HtmlHTMLAttributes<HTMLElement>;
-    "wired-progress": import("wired-elements").WiredProgress | React.HtmlHTMLAttributes<HTMLElement>;
-    "wired-radio": import("wired-elements").React.HtmlHTMLAttributes<HTMLElement> | WiredRadio;
-    "wired-search-input": import("wired-elements").WiredSearchInput | React.HtmlHTMLAttributes<HTMLElement>;
-    "wired-slider": import("wired-elements").WiredSlider | React.HtmlHTMLAttributes<HTMLElement>;
-    "wired-spinner": import("wired-elements").WiredSpinner | React.HtmlHTMLAttributes<HTMLElement>;
-    "wired-tabs": import("wired-elements").WiredTabs | React.HtmlHTMLAttributes<HTMLElement>;
-    "wired-textarea": import("wired-elements").WiredTextarea | React.HtmlHTMLAttributes<HTMLElement>;
-    "wired-toggle": import("wired-elements").WiredToggle | React.HtmlHTMLAttributes<HTMLElement>;
-    "wired-video": import("wired-elements").WiredVideo | React.HtmlHTMLAttributes<HTMLElement>;
+    "wired-button": Wired2React<import("wired-elements").WiredButton>;
+    "wired-calendar": Wired2React<import("wired-elements").WiredCalendar>;
+    "wired-card": Wired2React<import("wired-elements").WiredCard>;
+    "wired-checkbox": Wired2React<import("wired-elements").WiredCheckbox>;
+    "wired-combo": Wired2React<import("wired-elements").WiredCombo>;
+    "wired-dialog": Wired2React<import("wired-elements").WiredDialog>;
+    "wired-divider": Wired2React<import("wired-elements").WiredDivider>;
+    "wired-fab": Wired2React<import("wired-elements").WiredFab>;
+    "wired-icon-button": Wired2React<import("wired-elements").WiredIconButton>;
+    "wired-image": Wired2React<import("wired-elements").WiredImage>;
+    "wired-input": Wired2React<import("wired-elements").WiredInput>;
+    "wired-item": Wired2React<import("wired-elements").WiredItem>;
+    "wired-link": Wired2React<import("wired-elements").WiredLink>;
+    "wired-listbox": Wired2React<import("wired-elements").WiredListbox>;
+    "wired-progress": Wired2React<import("wired-elements").WiredProgress>;
+    "wired-radio": Wired2React<import("wired-elements").WiredRadio>;
+    "wired-search-input": Wired2React<import("wired-elements").WiredSearchInput>;
+    "wired-slider": Wired2React<import("wired-elements").WiredSlider>
+    "wired-spinner": Wired2React<import("wired-elements").WiredSpinner>;
+    "wired-tabs": Wired2React<import("wired-elements").WiredTabs>;
+    "wired-textarea": Wired2React<import("wired-elements").WiredTextarea>;
+    "wired-toggle": Wired2React<import("wired-elements").WiredToggle>;
+    "wired-video": Wired2React<import("wired-elements").WiredVideo>;
   }
 }
