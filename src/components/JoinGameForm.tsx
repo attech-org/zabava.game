@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { WiredInput } from "wired-elements";
 
 const Card = styled.section`
   display: flex;
@@ -13,6 +14,10 @@ const Card = styled.section`
   wired-button {
     width: 100px;
   }
+
+  wired-input {
+    width: calc(400px - 20px);
+  }
 `;
 
 const Header = styled.h1`
@@ -21,10 +26,8 @@ const Header = styled.h1`
   text-align: left;
 `;
 
-const Input = styled.input`
-  width: calc(400px - 20px - 2 * 5px);
-  margin: 10px 0 5px 0;
-  padding: 10px 5px;
+const InputWrapper = styled.div`
+  width: 400px;
 `;
 
 const StyledLink = styled(Link)`
@@ -43,8 +46,9 @@ const Button = styled.div`
 const JoinGameForm = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [input, setInput] = useState<string>("");
+  const textInput = useRef<WiredInput>(null);
 
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleInput = (e: React.ChangeEvent<WiredInput>): void => {
     setInput(e.target.value);
   };
 
@@ -56,13 +60,14 @@ const JoinGameForm = () => {
         <Card>
           <Header>Join game</Header>
 
-          {/* <wired-input type="text" onChange={handleInput} /> */}
-
-          <Input
-            type="text"
-            placeholder="enter room name"
-            onChange={handleInput}
-          />
+          <InputWrapper>
+            <wired-input
+              type="text"
+              placeholder="enter room name"
+              ref={textInput}
+              onInput={handleInput}
+            />
+          </InputWrapper>
 
           <ButtonWrapper>
             <Button>

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { WiredInput } from "wired-elements";
 
 const Card = styled.section`
   display: flex;
@@ -13,6 +14,10 @@ const Card = styled.section`
   wired-button {
     width: 100px;
   }
+
+  wired-input {
+    width: calc(400px - 20px);
+  }
 `;
 
 const Header = styled.h1`
@@ -21,21 +26,22 @@ const Header = styled.h1`
   text-align: left;
 `;
 
-const Input = styled.input`
-  width: calc(400px - 20px - 2 * 5px);
-  margin: 10px 0 5px 0;
-  padding: 10px 5px;
+const InputWrapper = styled.div`
+  width: 400px;
 `;
 
 const Error = styled.p`
   color: red;
+  margin: 5px;
 `;
 
 interface StyledLinkProps {
   isValid: boolean;
 }
 
-const StyledLink = styled(Link)<StyledLinkProps>`
+const StyledLink = styled(({ isValid, ...props }) => (
+  <Link {...props} />
+))<StyledLinkProps>`
   text-decoration: none;
   color: black;
   pointer-events: ${(props) => (props.isValid ? "auto" : "none")};
@@ -52,14 +58,13 @@ const Button = styled.div`
 const CreateGameForm = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [input, setInput] = useState<string>("");
+  const roomNameRegex = /^\w+$/;
+  const isValid = roomNameRegex.test(input);
+  const textInput = useRef<WiredInput>(null);
 
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleInput = (e: React.ChangeEvent<WiredInput>): void => {
     setInput(e.target.value);
   };
-
-  const roomNameRegex = /^\w+$/;
-
-  const isValid = roomNameRegex.test(input);
 
   return (
     <>
@@ -68,15 +73,16 @@ const CreateGameForm = () => {
       <wired-dialog {...(isOpen ? { open: true } : {})}>
         <Card>
           <Header>Create game</Header>
-          {/* <wired-input type="text" onChange={handleInput} /> */}
 
           <div>
-            <Input
-              type="text"
-              placeholder="enter room name"
-              pattern="/^\w+$/"
-              onChange={handleInput}
-            />
+            <InputWrapper>
+              <wired-input
+                type="text"
+                placeholder="enter room name"
+                ref={textInput}
+                onInput={handleInput}
+              />
+            </InputWrapper>
             {!isValid && (
               <Error>
                 Only latin character, numbers and undescore allowed!
