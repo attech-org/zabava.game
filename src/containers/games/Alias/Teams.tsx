@@ -1,10 +1,9 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { WiredSlider } from "wired-elements";
 import styled from "styled-components";
-import { chunk, snakeCase } from "lodash";
+import { chunk } from "lodash";
 import { AliasContext, AliasContextType } from ".";
 import teamNamesData from "../../../content/team_names.json";
-import { stringToColor } from "../../../services/color";
 
 const Main = styled.main`
   margin: 0 auto;
@@ -42,12 +41,8 @@ const Teams = styled.div`
   }
 `;
 
-const inputStyle = {
-  fontFamily: "Indie Flower",
-};
-
 const ctaButton = {
-  color: "green"
+  color: "green",
 };
 
 const VerticalList = styled.div`
@@ -61,10 +56,14 @@ interface AliasTeamsPageProps {}
 const AliasTeamsPage: React.FunctionComponent<AliasTeamsPageProps> = () => {
   const sliderRef = useRef<WiredSlider>(null);
   const [teamSize, setTeamSize] = useState<number>(2);
-  const { players, role } = useContext(AliasContext);
-  const isHost = role === "admin"; // enable team edit if true, and disable if false
+  const [teams, setTeams] = useState<AliasContextType["teams"]>([]);
+  const { players } = useContext(AliasContext);
+  // const isHost = role === "admin"; // enable team edit if true, and disable if false
 
   useEffect(() => {
+    const generatedTeams = generateTeams(players, teamSize);
+    setTeams(generatedTeams);
+
     const sliderEl = sliderRef.current;
     sliderEl?.addEventListener("change", handleTeamSizeChange);
     return () => {
@@ -82,7 +81,7 @@ const AliasTeamsPage: React.FunctionComponent<AliasTeamsPageProps> = () => {
 
     for (let i = 0; i < playerChunks.length; i++) {
       result.push({
-        id: snakeCase("team" + i + teamNames[i]),
+        id: i,
         name: teamNames[i],
         players: playerChunks[i],
       });
@@ -92,29 +91,50 @@ const AliasTeamsPage: React.FunctionComponent<AliasTeamsPageProps> = () => {
   };
 
   const handleTeamSizeChange = (e: any) => {
-    setTeamSize(e.target.value);
+    const size = e.target.value;
+    const generatedTeams = generateTeams(players, size);
+    setTeamSize(size);
+    setTeams(generatedTeams);
   };
 
-  const teams = generateTeams(players, teamSize);
+  const handleShuffleClick = () => {
+    const generatedTeams = generateTeams(players.sort(() => Math.random() - 0.5), teamSize);
+    setTeams(generatedTeams);
+  };
+
+  // const handleTeamNameChange = (teamId: number) => (e: any) => {
+  //   setTeams(
+  //     teams.map((el) => {
+  //       if (el.id === teamId) {
+  //         return {
+  //           ...el,
+  //           name: e.target.value,
+  //         };
+  //       }
+  //       return el;
+  //     })
+  //   );
+  // };
+
   return (
     <Main>
       <Config>
         <wired-card>
           Team Size: {teamSize} {teamSize === 2 && "(classic)"}
-          <wired-slider ref={sliderRef} min={2} max={6} value={teamSize} />
+          <wired-slider ref={sliderRef} min={2} max={4} value={teamSize} />
           <Actions>
-            <wired-button>Shuffle</wired-button>
+            <wired-button onClick={handleShuffleClick}>Shuffle</wired-button>
             <wired-button style={ctaButton}>Confirm teams</wired-button>
           </Actions>
         </wired-card>
       </Config>
       <Teams>
         {teams.map((team) => (
-          <wired-card key={team.id} fill={stringToColor(team.name)}>
-            <wired-input
-              value={team.name}
-              style={inputStyle}
-            />
+          <wired-card
+            key={team.id}
+            // style={{ color: stringToColor(team.name)}}
+          >
+            <h2>{team.name.toUpperCase()}</h2>
             <VerticalList>
               {team.players.map(({ id, username }) => (
                 <wired-item key={id}>{username}</wired-item>

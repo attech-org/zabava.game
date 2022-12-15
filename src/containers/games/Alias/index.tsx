@@ -21,7 +21,7 @@ interface Player {
 }
 
 interface Team {
-  id: string;
+  id: number;
   name: string;
   players: Player[];
 }
